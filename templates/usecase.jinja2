@@ -1,0 +1,12 @@
+# -*- coding: utf-8 -*-
+
+
+class {{ usecase }}Usecase(object):
+
+    def __init__(self, gateway):
+        self.gateway = gateway
+
+    def execute(self, {{ usecase }}_struct):
+        value1 = {{ usecase }}_struct.value1
+        value2 = {{ usecase }}_struct.value2
+        return self.gateway.sum(value1, value2)
