@@ -1,12 +1,12 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 
-class {{ usecase }}Usecase(object):
+class {{ camel }}Usecase(object):
 
     def __init__(self, gateway):
         self.gateway = gateway
 
-    def execute(self, {{ usecase }}_struct):
-        value1 = {{ usecase }}_struct.value1
-        value2 = {{ usecase }}_struct.value2
+    def execute(self, {{ snake }}_struct):
+        value1 = {{ snake }}_struct.value1
+        value2 = {{ snake }}_struct.value2
         return self.gateway.sum(value1, value2)

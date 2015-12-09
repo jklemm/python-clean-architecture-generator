@@ -1,0 +1,9 @@
+# coding: utf-8
+
+
+class {{ camel }}GatewayFactory(object):
+    @classmethod
+    def make(cls):
+        from gateways import {{ camel }}Gateway
+
+        return {{ camel }}Gateway()

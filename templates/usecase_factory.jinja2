@@ -1,0 +1,11 @@
+# coding: utf-8
+
+
+class {{ camel }}UsecaseFactory(object):
+    @classmethod
+    def make(cls, conta_id):
+        from usecase import {{ camel }}Usecase
+        
+        return {{ camel }}Usecase(
+            {{ camel }}GatewayFactory.make(conta_id)
+        )
