@@ -4,7 +4,7 @@ import os
 from jinja2 import FileSystemLoader, Environment
 
 EXEC_PATH = os.path.dirname(os.path.abspath(__file__))
-TEMPLATE_DIR = EXEC_PATH + '/templates/'
+TEMPLATE_DIR = EXEC_PATH + '/templates/pcag/'
 j2_env = Environment(loader=FileSystemLoader(TEMPLATE_DIR), trim_blocks=True)
 
 OUTPUT_DIR = EXEC_PATH + '/output/'
