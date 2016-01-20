@@ -4,9 +4,11 @@ from myproject.myapp.management.pcag import generate_usecase
 
 
 class Command(BaseCommand):
-    args = '<poll_id poll_id ...>'
-    help = 'Closes the specified poll for voting'
+    args = 'usecase_name'
+    help = 'Generates a usecase class'
 
     def handle(self, *args, **options):
-        generate_usecase('teste')
-        self.stdout.write('Usecase gerado: teste_usecase.py\n')
+        name = args[0]
+
+        generated_usecase = generate_usecase(name)
+        self.stdout.write('Generated Usecase: {0}\n'.format(generated_usecase))

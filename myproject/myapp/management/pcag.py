@@ -39,6 +39,7 @@ def generate_usecase(name):
     content = j2_env.get_template('usecase.jinja2').render(snake=snake_name, camel=camel_name)
     filename = OUTPUT_DIR + 'core/usecases/{0}_usecase.py'.format(snake_name)
     generate_file(content, filename)
+    return filename
 
 
 def generate_gateway(name):
