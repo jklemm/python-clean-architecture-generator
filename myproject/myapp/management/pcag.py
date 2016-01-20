@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+# coding: utf-8
 
 import os
 from jinja2 import FileSystemLoader, Environment
@@ -20,48 +20,49 @@ def generate_file(content, filename):
     newfile.close()
 
 
-def generate_entity():
+def generate_entity(name):
+    snake_name, camel_name = convert_names(name)
     content = j2_env.get_template('entity.jinja2').render(snake=snake_name, camel=camel_name)
     filename = OUTPUT_DIR + 'core/entities/{0}_entity.py'.format(snake_name)
     generate_file(content, filename)
 
 
-def generate_struct():
+def generate_struct(name):
+    snake_name, camel_name = convert_names(name)
     content = j2_env.get_template('struct.jinja2').render(snake=snake_name, camel=camel_name)
     filename = OUTPUT_DIR + 'core/structs/{0}_struct.py'.format(snake_name)
     generate_file(content, filename)
 
 
-def generate_usecase():
+def generate_usecase(name):
+    snake_name, camel_name = convert_names(name)
     content = j2_env.get_template('usecase.jinja2').render(snake=snake_name, camel=camel_name)
     filename = OUTPUT_DIR + 'core/usecases/{0}_usecase.py'.format(snake_name)
     generate_file(content, filename)
 
 
-def generate_gateway():
+def generate_gateway(name):
+    snake_name, camel_name = convert_names(name)
     content = j2_env.get_template('gateway.jinja2').render(snake=snake_name, camel=camel_name)
     filename = OUTPUT_DIR + 'gateways/{0}_gateway.py'.format(snake_name)
     generate_file(content, filename)
 
 
-def generate_gateway_factory():
+def generate_gateway_factory(name):
+    snake_name, camel_name = convert_names(name)
     content = j2_env.get_template('gateway_factory.jinja2').render(snake=snake_name, camel=camel_name)
     filename = OUTPUT_DIR + 'factories/{0}_gateway_factory.py'.format(snake_name)
     generate_file(content, filename)
 
 
-def generate_usecase_factory():
+def generate_usecase_factory(name):
+    snake_name, camel_name = convert_names(name)
     content = j2_env.get_template('usecase_factory.jinja2').render(snake=snake_name, camel=camel_name)
     filename = OUTPUT_DIR + 'factories/{0}_usecase_factory.py'.format(snake_name)
     generate_file(content, filename)
 
-name = 'rentabilidade'
-snake_name = name.lower()
-camel_name = name.capitalize()
 
-generate_entity()
-generate_struct()
-generate_gateway()
-generate_usecase()
-generate_gateway_factory()
-generate_usecase_factory()
+def convert_names(name):
+    snake_name = name.lower()
+    camel_name = name.capitalize()
+    return snake_name, camel_name
